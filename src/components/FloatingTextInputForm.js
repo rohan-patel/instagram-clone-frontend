@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Animated, StyleSheet, TextInput} from 'react-native';
+import {View, Animated, StyleSheet, TextInput, ScrollView} from 'react-native';
 import {string, func, object, number} from 'prop-types';
 
 export class FloatingTextInputForm extends Component {
@@ -20,7 +20,7 @@ export class FloatingTextInputForm extends Component {
   static defaultProps = {
     keyboardType: 'default',
     titleActiveSize: 11.5,
-    titleInActiveSize: 15,
+    titleInActiveSize: 18,
     titleActiveColor: 'black',
     titleInactiveColor: 'dimgrey',
     textInputStyles: {},
@@ -86,12 +86,21 @@ export class FloatingTextInputForm extends Component {
     return (
       <View style={Styles.container}>
         <Animated.Text
-          style={[Styles.titleStyles, this._returnAnimatedTitleStyles()]}>
+          style={
+            this.state.isFieldActive
+              ? [Styles.titleStyles, this._returnAnimatedTitleStyles()]
+              : [Styles.titleStylesBlur, this._returnAnimatedTitleStyles()]
+          }>
           {this.props.title}
         </Animated.Text>
+
         <TextInput
           value={this.props.value}
-          style={[Styles.textInput, this.props.textInputStyles]}
+          style={
+            this.state.isFieldActive
+              ? [Styles.textInput, this.props.textInputStyles]
+              : [Styles.textInputBlur, this.props.textInputStyles]
+          }
           underlineColorAndroid="transparent"
           onFocus={this._handleFocus}
           onBlur={this._handleBlur}
@@ -112,33 +121,45 @@ const Styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 0.5,
     marginBottom: 8,
+    // paddingTop: 10,
+    // paddingBottom: 10,
     // height: 50,
     // marginVertical: 4,
   },
   textInput: {
     fontSize: 15,
-    // marginTop: 5,
     fontFamily: 'Avenir-Medium',
     color: 'black',
-    // includeFontPadding: false,
     padding: 0,
-    margin: 0,
-    margin: 5,
+    // margin: 20,
+    marginLeft: 20,
+    marginRight: 0,
+    marginBottom: 10,
+    marginTop: 5,
+  },
+  textInputBlur: {
+    fontSize: 15,
+    fontFamily: 'Avenir-Medium',
+    color: 'black',
+    padding: 0,
+    // margin: 5,
     marginLeft: 20,
     marginRight: 0,
     marginTop: 0,
   },
   titleStyles: {
-    // position: 'absolute',
     fontFamily: 'Avenir-Medium',
     margin: 5,
     marginLeft: 20,
     marginRight: 0,
     marginBottom: 0,
-    // paddingLeft: 5,
-    // left: 3,
-    // left: 4,
-    // padding: 10,
-    // paddingBottom: 0,
+  },
+  titleStylesBlur: {
+    fontFamily: 'Avenir-Medium',
+    margin: 5,
+    marginLeft: 20,
+    marginRight: 0,
+    marginBottom: 10,
+    marginTop: 10,
   },
 });
