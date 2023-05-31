@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="100" y="100" width="300" height="300" style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 20px; stroke-linejoin: round;"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 20px;" x1="200" y1="100" x2="200" y2="400"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 20px;" x1="300" y1="100" x2="299.127" y2="399.768"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 20px;" x1="250.001" y1="150" x2="250.001" y2="450" transform="matrix(0, -1, 1, 0, -49.998997, 550.000985)"/>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 20px;" x1="250.32" y1="50.554" x2="249.447" y2="350.321" transform="matrix(0, -1, 1, 0, 49.446492, 450.320502)"/>
+</svg>

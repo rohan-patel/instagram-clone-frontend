@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="246.715" y1="184" x2="246.715" y2="389.388" id="gradient-0" gradientTransform="matrix(0.084525, 0.105457, -0.105457, 0.084525, 21.497265, -38.602209)" spreadMethod="pad">
+      <stop offset="0" style="stop-color: rgb(173, 53, 197);"/>
+      <stop offset="0.435" style="stop-color: rgb(236, 47, 47);"/>
+      <stop offset="0.534" style="stop-color: rgb(238, 89, 55);"/>
+      <stop offset="1" style="stop-color: rgb(248, 206, 91);"/>
+    </linearGradient>
+  </defs>
+  <ellipse style="fill: none; stroke: url(#gradient-0); opacity: 0.8; stroke-width: 0.5px;" cx="16" cy="16" rx="12" ry="12.007" bx:origin="0 0"/>
+</svg>
