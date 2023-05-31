@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Button,
   View,
+  ScrollView,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import InstaLogo from '../assets/svg/instaLogoSmall';
@@ -16,10 +17,12 @@ import {loginUser} from '../functions/auth';
 import UserInfoSecuredDBGateway from '../storage/userInfo';
 import {setSignIn} from '../redux-store/slices/authSlice';
 import {useDispatch} from 'react-redux';
+import {Dimensions} from 'react-native';
 
 const LoginScreen = ({navigation}) => {
   const [principal, setPrincipal] = useState('');
   const [password, setPassword] = useState('');
+  const height = Dimensions.get('window').height;
 
   const dispatch = useDispatch();
 
@@ -60,6 +63,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      {/* <ScrollView style={{height: height}}> */}
       <View style={{justifyContent: 'flex-start'}}>
         <View style={styles.headerWrapper}>
           <LeftArrow width={30} height={30} stroke={'#000'} />
@@ -73,52 +77,55 @@ const LoginScreen = ({navigation}) => {
       </View>
 
       <View style={styles.inputWrapper}>
-        <FloatingTextInputForm
-          attrName="principal"
-          title="Username, email or mobile number"
-          value={principal}
-          updateMasterState={setPrincipal}
-          titleInActiveSize={16}
-          textInputStyles={{
-            // here you can add additional TextInput styles
-            color: 'green',
-            fontSize: 18,
-            // numberOfLines: 1,
-          }}
-          otherTextInputProps={
-            {
-              // here you can add other TextInput props of your choice
-              // maxLength: 12,
+        <ScrollView keyboardShouldPersistTaps="handled">
+          <FloatingTextInputForm
+            attrName="principal"
+            title="Username, email or mobile number"
+            value={principal}
+            updateMasterState={setPrincipal}
+            titleInActiveSize={15}
+            textInputStyles={{
+              // here you can add additional TextInput styles
+              color: 'green',
+              fontSize: 18,
+              // numberOfLines: 1,
+            }}
+            otherTextInputProps={
+              {
+                // here you can add other TextInput props of your choice
+                // maxLength: 12,
+              }
             }
-          }
-        />
-        <FloatingTextInputForm
-          attrName="password"
-          title="Password"
-          value={password}
-          updateMasterState={setPassword}
-          titleInActiveSize={16}
-          textInputStyles={{
-            // here you can add additional TextInput styles
-            color: 'green',
-            fontSize: 18,
-          }}
-          otherTextInputProps={
-            {
-              // here you can add other TextInput props of your choice
-              // maxLength: 12,
+          />
+          <FloatingTextInputForm
+            attrName="password"
+            title="Password"
+            value={password}
+            updateMasterState={setPassword}
+            titleInActiveSize={15}
+            textInputStyles={{
+              // here you can add additional TextInput styles
+              color: 'green',
+              fontSize: 18,
+            }}
+            otherTextInputProps={
+              {
+                // here you can add other TextInput props of your choice
+                // maxLength: 12,
+              }
             }
-          }
-        />
-        <TouchableOpacity style={styles.buttonWrapper} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Log In</Text>
-        </TouchableOpacity>
+          />
+          <TouchableOpacity style={styles.buttonWrapper} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Log In</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={{alignItems: 'center', padding: 10}}>
-          <Text style={{color: colors.black, fontSize: 14, fontWeight: '400'}}>
-            Forgot Password ?
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={{alignItems: 'center', padding: 10}}>
+            <Text
+              style={{color: colors.black, fontSize: 14, fontWeight: '400'}}>
+              Forgot Password ?
+            </Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
 
       <View style={styles.footerWrapper}>
@@ -133,6 +140,7 @@ const LoginScreen = ({navigation}) => {
       </View>
 
       {/* <Text>LoginScreen</Text> */}
+      {/* </ScrollView> */}
     </View>
   );
 };

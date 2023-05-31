@@ -47,7 +47,8 @@ const AppRoute = () => {
   }
   return (
     <NavigationContainer>
-      {isLoggedIn ? <AppNavigator /> : <AuthNavigator />}
+      <AppNavigator />
+      {/* {isLoggedIn ? <AppNavigator /> : <AuthNavigator />} */}
     </NavigationContainer>
   );
 };
