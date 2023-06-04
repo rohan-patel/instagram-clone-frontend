@@ -13,6 +13,7 @@ import SplashScreen from '../screens/SplashScreen';
 import UserInfoSecuredDBGateway from '../storage/userInfo';
 import {setSignIn} from '../redux-store/slices/authSlice';
 import {useDispatch} from 'react-redux';
+import SearchScreen from '../screens/SearchScreen';
 
 const AppRoute = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -47,6 +48,7 @@ const AppRoute = () => {
   }
   return (
     <NavigationContainer>
+      {/* <SearchScreen /> */}
       <AppNavigator />
       {/* {isLoggedIn ? <AppNavigator /> : <AuthNavigator />} */}
     </NavigationContainer>

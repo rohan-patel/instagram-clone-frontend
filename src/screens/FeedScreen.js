@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Button,
 } from 'react-native';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {colors} from '../config/colors';
 import Feed from '../components/Feed';
 import Stories from '../components/Stories';
@@ -23,15 +23,33 @@ import {logout} from '../functions/auth';
 import {useDispatch} from 'react-redux';
 import {setSignOut} from '../redux-store/slices/authSlice';
 import UserInfoSecuredDBGateway from '../storage/userInfo';
+import {DrawerActions} from '@react-navigation/native';
+
+// import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 // import Search from '../';
 
-const FeedScreen = ({navigation}) => {
-  // navigation.replace('Login');
+// const FeedScreen = ({navigation}) => {
+function FeedScreen({navigation}) {
+  // const [gestureName, setGestureNName] = useState('none');
 
-  // navigation.reset({
-  //   index: 0,
-  //   routes: [{name: 'Feed'}],
-  // });
+  const onSwipeLeft = () => {
+    navigation.navigate('Messages');
+  };
+
+  const onSwipeRight = () => {
+    navigation.navigate('Add');
+  };
+
+  const config = {
+    velocityThreshold: 0.3,
+    directionalOffsetThreshold: 80,
+  };
+
+  const navigateToMessages = () => {
+    console.log(navigation);
+    console.log('open messages');
+    navigation.getParent('DirectMessages').openDrawer();
+  };
 
   const dispatch = useDispatch();
 
@@ -55,7 +73,12 @@ const FeedScreen = ({navigation}) => {
             <Heart width={30} height={30} strokeWidth={5} />
           </TouchableOpacity>
           <View style={{width: 20}} />
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation
+                .getParent('DirectMessages')
+                .dispatch(DrawerActions.openDrawer())
+            }>
             <Messenger strokeWidth={2.5} width={27} height={27} />
           </TouchableOpacity>
         </View>
@@ -77,9 +100,10 @@ const FeedScreen = ({navigation}) => {
         <Button title="Logout" onPress={handleLogout} />
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Home width={25} height={25} fill={'#000'} />
-        {/* <Search width={25} height={25} strokeWidth={0.75} /> */}
+      {/* <View style={styles.footer}>
+        <TouchableOpacity>
+          <Home width={25} height={25} fill={'#000'} />
+        </TouchableOpacity>
         <Search width={25} height={25} strokeWidth={0.15} />
         <Add width={25} height={25} />
         <Reel width={25} height={25} />
@@ -90,10 +114,10 @@ const FeedScreen = ({navigation}) => {
             source={require('../assets/images/face.jpeg')}
           />
         </View>
-      </View>
+      </View> */}
     </View>
   );
-};
+}
 
 export default FeedScreen;
 
