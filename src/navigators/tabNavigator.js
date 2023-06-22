@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {getDrawerStatusFromState} from '@react-navigation/drawer';
 import FeedNavigator from './feedNavigator';
-import SearchScreen from '../screens/SearchScreen';
+import SearchNavigator from './searchNavigator';
+import SearchScreen from '../screens/SearchPrimary';
 import AddPostScreen from '../screens/AddPostScreen';
 import ReelScreen from '../screens/ReelScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -29,13 +31,21 @@ const AddPost = () => {
 function TabNavigator({navigation}) {
   const dispatch = useDispatch();
   const isHomeActive = useSelector(selectIsHomeActive);
+  let isDrawerOpen = getDrawerStatusFromState(
+    navigation.getParent('Post').getState(),
+  );
+
+  useEffect(() => {
+    console.log(isDrawerOpen);
+  }, [isDrawerOpen]);
+
   return (
     <Tab.Navigator
       id="tabs"
       screenOptions={({route}) => ({
+        tabBarStyle: {position: 'absolute'},
         tabBarIcon: ({focused, color, size}) => {
           let iconComponent;
-
           if (route.name === 'Feed') {
             iconComponent = focused ? (
               <Home width={30} height={30} fill={'#000'} />
@@ -64,6 +74,7 @@ function TabNavigator({navigation}) {
         },
         headerShown: false,
         tabBarShowLabel: false,
+        // tabBarHideOnKeyboard: true,
       })}>
       <Tab.Screen
         name="Feed"
@@ -77,7 +88,7 @@ function TabNavigator({navigation}) {
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
+        component={SearchNavigator}
         listeners={{
           focus: e => {
             dispatch(setHomeInactive());

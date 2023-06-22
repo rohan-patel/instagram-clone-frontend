@@ -4,8 +4,8 @@ import Search from '../assets/svg/search';
 import {colors} from '../config/colors';
 import PostGrid from './PostGrid';
 
-const SearchBar = () => {
-  const [searchInput, setSearchInput] = useState('');
+const SearchBar = ({textInputEnabled, setSearchInput}) => {
+  // const [searchInput, setSearchInput] = useState('');
 
   return (
     <View style={styles.container}>
@@ -13,12 +13,19 @@ const SearchBar = () => {
         <Search width={20} height={20} strokeWidth={0.15} />
       </View>
       <View style={styles.inputWrapper}>
-        <TextInput
-          placeholder={'Search'}
-          placeholderTextColor={colors.darkgray}
-          onChangeText={text => setSearchInput(text)}
-          style={styles.inputBox}
-        />
+        {textInputEnabled ? (
+          <TextInput
+            placeholder={'Search'}
+            placeholderTextColor={colors.darkgray}
+            onChangeText={text => setSearchInput(text)}
+            autoFocus={true}
+            style={styles.inputBox}
+          />
+        ) : (
+          <Text style={[styles.inputBox, {color: colors.darkgray}]}>
+            Search
+          </Text>
+        )}
       </View>
     </View>
   );
@@ -33,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gray1,
     padding: 10,
     borderRadius: 5,
+    width: '100%',
   },
 
   iconWrapper: {

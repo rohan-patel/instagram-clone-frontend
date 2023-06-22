@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import FeedScreen from '../screens/FeedScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import SearchScreen from '../screens/SearchScreen';
+import SearchScreen from '../screens/SearchPrimary';
 import Home from '../assets/svg/home';
 import Search from '../assets/svg/search';
 import FooterTabProfile from '../components/FooterTabProfile';
@@ -24,6 +24,7 @@ import {
 } from '../redux-store/slices/appSlice';
 
 import AddDrawerNavigator from './addDrawerNavigator';
+import SearchNavigator from './searchNavigator';
 
 const AppNavigator = () => {
   return <AddDrawerNavigator />;

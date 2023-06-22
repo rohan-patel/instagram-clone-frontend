@@ -5,6 +5,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Button,
 } from 'react-native';
 import React, {useEffect} from 'react';
@@ -26,35 +27,23 @@ import {
   setHomeInactive,
 } from '../redux-store/slices/appSlice';
 
-const SearchScreen = ({navigation}) => {
+const SearchPrimary = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <View style={styles.searchBar}>
-        <SearchBar />
-      </View>
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('SearchSecondary')}>
+        <View style={styles.searchBar}>
+          <SearchBar textInputEnabled={false} />
+        </View>
+      </TouchableWithoutFeedback>
       <View style={{flex: 1}}>
         <PostGrid />
       </View>
-      {/* <View style={styles.footer}>
-        <TouchableOpacity>
-          <Home width={25} height={25} fill={'#000'} />
-        </TouchableOpacity>
-        <Search width={25} height={25} strokeWidth={0.15} />
-        <Add width={25} height={25} />
-        <Reel width={25} height={25} />
-        <View style={styles.profileCover}>
-          <Profile width={30} height={30} fill={colors.secodary} />
-          <Image
-            style={styles.profilePic}
-            source={require('../assets/images/face.jpeg')}
-          />
-        </View>
-      </View> */}
     </View>
   );
 };
 
-export default SearchScreen;
+export default SearchPrimary;
 
 const styles = StyleSheet.create({
   container: {

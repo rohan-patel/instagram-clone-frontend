@@ -3,9 +3,6 @@ import UserInfoSecuredDBGateway from '../storage/userInfo';
 import jwt_decode from 'jwt-decode';
 
 export const loginUser = async userDetails => {
-  console.log(userDetails);
-
-  console.log('inside return');
   const response = await login(userDetails);
 
   console.log(response);

@@ -98,6 +98,7 @@ function FeedScreen({navigation}) {
         <Feed />
         <Feed />
         <Button title="Logout" onPress={handleLogout} />
+        <View style={{height: 60}} />
       </ScrollView>
 
       {/* <View style={styles.footer}>
