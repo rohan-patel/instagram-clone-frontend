@@ -16,6 +16,9 @@ import {useDispatch} from 'react-redux';
 import SearchScreen from '../screens/SearchPrimary';
 import SearchSecondary from '../screens/SearchSeconndary';
 import Mobile from '../screens/SignUpScreens/Mobile';
+import Email from '../screens/SignUpScreens/Email';
+import Confirmation from '../screens/SignUpScreens/Confirmation';
+import Name from '../screens/SignUpScreens/Name';
 
 const AppRoute = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -50,7 +53,7 @@ const AppRoute = () => {
   }
   return (
     <NavigationContainer>
-      <Mobile />
+      <Name />
       {/* <SearchScreen /> */}
       {/* <AppNavigator /> */}
       {/* {isLoggedIn ? <AppNavigator /> : <AuthNavigator />} */}

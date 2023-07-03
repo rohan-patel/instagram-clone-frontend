@@ -4,8 +4,8 @@ import {colors} from '../../config/colors';
 import Back from '../../assets/svg/back';
 import {FloatingTextInputForm} from '../../components/FloatingTextInputForm';
 
-const Mobile = () => {
-  const [mobile, setMobile] = useState('');
+const Confirmation = () => {
+  const [code, setCode] = useState('');
 
   return (
     <View style={styles.container}>
@@ -14,21 +14,21 @@ const Mobile = () => {
           <Back width="18" height="18" strokeWidth="6" stroke="#000" />
         </TouchableHighlight>
         <View style={styles.headingWrapper}>
-          <Text style={styles.heading}>What's your mobile number?</Text>
+          <Text style={styles.heading}>Enter the confirmation code</Text>
         </View>
         <View style={styles.subheadingWrapper}>
           <Text style={styles.subheading}>
-            Enter the mobile number on which you can be contacted. No one will
-            see this on your profile.
+            To confirm your account, enter the 6-digit code we sent to
+            +917228815397
           </Text>
         </View>
         <View style={styles.inputWrapper}>
           <FloatingTextInputForm
-            attrName="mobile"
-            title="Mobile number"
-            value={mobile}
-            updateMasterState={setMobile}
-            keyboardType="phone-pad"
+            attrName="code"
+            title="Confirmation Code"
+            value={code}
+            updateMasterState={setCode}
+            keyboardType="numeric"
             titleInActiveSize={15}
             textInputStyles={{
               // here you can add additional TextInput styles
@@ -43,17 +43,17 @@ const Mobile = () => {
             }
           />
         </View>
-        <View style={styles.captionWrapper}>
+        {/* <View style={styles.captionWrapper}>
           <Text style={styles.caption}>
             You may receive SMS notifications from us for security and login
             purposes.
           </Text>
-        </View>
+        </View> */}
         <TouchableHighlight style={styles.nextWrapper}>
           <Text style={styles.nextText}>Next</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.emailWrapper}>
-          <Text style={styles.emailText}>Sign up with email address</Text>
+          <Text style={styles.emailText}>I didn't get the code</Text>
         </TouchableHighlight>
       </View>
       <TouchableHighlight style={styles.loginTextWrapper}>
@@ -63,7 +63,7 @@ const Mobile = () => {
   );
 };
 
-export default Mobile;
+export default Confirmation;
 
 const styles = StyleSheet.create({
   container: {
@@ -110,17 +110,9 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
 
-  captionWrapper: {
-    paddingLeft: 20,
-  },
-
-  caption: {
-    fontFamily: 'InstagramSans-Regular',
-    color: colors.black,
-  },
-
   nextWrapper: {
     margin: 20,
+    marginTop: 10,
     marginBottom: 5,
     padding: 12,
     borderColor: colors.primary,
